@@ -60,7 +60,10 @@ struct MidaCardModifier: ViewModifier {
         content
             .padding(padding)
             .background(reduceTransparency ? Color(uiColor: .secondarySystemBackground) : Color.clear, in: RoundedRectangle(cornerRadius: MidaRadius.medium, style: .continuous))
-            .background(reduceTransparency ? Color.clear : .regularMaterial, in: RoundedRectangle(cornerRadius: MidaRadius.medium, style: .continuous))
+            .background(
+                RoundedRectangle(cornerRadius: MidaRadius.medium, style: .continuous)
+                    .fill(reduceTransparency ? AnyShapeStyle(Color.clear) : AnyShapeStyle(.regularMaterial))
+            )
             .overlay {
                 RoundedRectangle(cornerRadius: MidaRadius.medium, style: .continuous)
                     .strokeBorder(Color.primary.opacity(0.06), lineWidth: 1)

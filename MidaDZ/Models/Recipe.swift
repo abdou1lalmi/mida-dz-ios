@@ -45,7 +45,9 @@ struct Ingredient: Identifiable, Codable, Hashable, Sendable {
     }
 }
 
-enum Difficulty: String, Codable, CaseIterable, Hashable, Sendable {
+enum Difficulty: String, Codable, CaseIterable, Hashable, Sendable, Identifiable {
+    var id: String { rawValue }
+
     case easy
     case medium
     case advanced
