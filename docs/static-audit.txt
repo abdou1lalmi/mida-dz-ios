@@ -1,0 +1,2 @@
+Scanned 15 Swift file(s); profile=native; findings=1
+[LOW] adaptation.dynamic-type — <project>: No explicit Dynamic Type handling was detected; inspect typography and layout with large accessibility sizes.
