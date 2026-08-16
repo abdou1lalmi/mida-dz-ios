@@ -37,7 +37,9 @@ Alternatively, create an iOS App target in Xcode named `MidaDZ`, add the `MidaDZ
 
 ## GitHub Actions build
 
-The repository includes `.github/workflows/ios.yml`. It runs on a GitHub-hosted macOS 14 runner, installs XcodeGen, generates an Xcode 15-compatible project, builds the app for the iOS Simulator without signing, runs unit tests on an iPhone 16 simulator when available, and uploads a zipped simulator `.app` plus diagnostics. To run it manually, open the repository on GitHub, select **Actions → MIDA DZ iOS → Run workflow**, and open the completed run’s **Artifacts** section. The simulator artifact is for CI inspection and cannot be installed directly on a physical iPhone; physical-device installation requires an Apple signing identity and provisioning profile.
+The repository includes `.github/workflows/ios.yml`. It runs on a GitHub-hosted macOS 14 runner, installs XcodeGen, generates an Xcode 15-compatible project, builds the app for the iOS Simulator without signing, runs unit tests on an iPhone 16 simulator when available, and uploads a zipped simulator `.app` plus diagnostics. To run it manually, open the repository on GitHub, select **Actions → MIDA DZ iOS → Run workflow**, and open the completed run’s **Artifacts** section. The simulator artifact is for CI inspection and cannot be installed directly on a physical iPhone.
+
+The same workflow includes a protected **signed-release** job. To use it, create a GitHub Environment named `ios-release`, add the Apple signing and App Store Connect secrets described in `docs/github-signing.md`, and run the workflow manually with **release = true**. The job archives the app for a physical iPhone, exports a signed IPA, uploads the IPA as an artifact, and can upload it to TestFlight when **upload_testflight = true**. It never runs for ordinary pushes or pull requests, and the signing material is read only from GitHub Secrets.
 
 ## Verification checklist
 
